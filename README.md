@@ -16,7 +16,7 @@ However, I immediately ran into issues when trying to use the product. These are
 
 After fixing these issues, I was able to proceed with the tutorial, and I was quite impressed with the capabilities. Specifically, I was really impressed with the debugging example, and the fact that the code produced by the Continue output is able to be automatically inserted (something Copilot lacks which is one of my major gripes with that extension).
 
-## Project from scratch
+## [Project from scratch](https://github.com/zaviermiller/continue-takehome/tree/main/rc-playground)
 The project I am creating from scratch is a web-based playground for my receipt-components library. This is something I've wanted to implement for a while, and I'm super excited about it. This will help users get their feet wet with the product before installing and using it in their own projects.
 
 I've never done this before, so I used the Continue chat feature to ask for advice:
@@ -49,7 +49,7 @@ I, unfortunately, spent way more time than I thought I would on this project, so
 
 Overall, I think using Continue for getting started smooths out the process a lot. It makes it easy to bounce ideas around, and explore different options for implementation and I will definitely be using it for finishing up this project.
 
-## Existing project
+## [Existing project](https://github.com/hack4impact-utk/compassion-ministries/tree/2754832f044b6ea99cca64378abd8d4bae6078d7)
 
 For the existing project, I am going to complete a ticket for the Hack4Impact project for Compassion Ministries. The ticket I am working on is [this](https://github.com/hack4impact-utk/compassion-ministries/issues/269) one.
 
