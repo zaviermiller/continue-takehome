@@ -46,7 +46,9 @@ I also noticed that the docs I add are not persisted. This may have been user er
 3. Close the window
 4. Reopen the window and try and access the docs.
 
-Keeping these docs stored would be a huge win. In many projects, you usually work with the same set of libraries, so quickly referencing those is paramount to fast development. It would also be cool if there could be different environments to reduce noise. If I'm working in a Rails project, I can add all of the docs I need to a Rails environment, and only use those. If I then work in a Python project for a client, I could set up an environment with all the docs I need for that.
+Keeping these docs stored would be a huge win. In many projects, you usually work with the same set of libraries, so quickly referencing those is paramount to fast development.
+
+It would also be cool if there could be different environments to reduce noise. If I'm working in a Rails project, I can add all of the docs I need to a Rails environment, and only use those. If I then work in a Python project for a client, I could set up an environment with all the docs I need for that.
 
 I also noticed that after using a custom doc source and then trying to go back and ask a question using a different doc source, the custom one is used. Screenshot below.
 ![Continue using the Monaco editor source instead of the Continue docs](./images/using-incorrect-context.png)
