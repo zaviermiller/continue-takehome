@@ -61,7 +61,11 @@ For the existing project, I am going to complete a ticket for the Hack4Impact pr
 ### Adding a context provider
 To begin, I wanted to try and use the GitHub issues context provider. To get started I asked Continue how to do this, but it wasn't able to effectively parse the docs and help, so I reverted to reading the docs manually.
 
-It was quite simple to set this up, however after adding the issues context provider, the default context providers were removed. To fix this I easily used the `config.ts` file to add the context provider instead of setting it directly. However, the TypeScript type `ContextProviderName` is not up to date, so TypeScript showed an error. Also, pushing in this way shows multiple GitHub Issues context providers, and I am not sure how best to add context providers while keeping the current ones.
+It was quite simple to set this up, however after adding the issues context provider, the default context providers were removed. To fix this I easily used the `config.ts` file to add the context provider instead of setting it directly. However, the TypeScript type `ContextProviderName` is not up to date, so TypeScript showed an error.
+
+Also, pushing in this way shows multiple GitHub Issues context providers (image below), and I am not sure how best to add context providers while keeping the current ones.
+
+![Multiple "Github Issue" context providers](./images/multiple-gh-issues.png)
 
 Unfortunately, after adding my repo to the settings I was still unable to use the context provider. The `config.ts` is below.
 
@@ -83,7 +87,7 @@ export function modifyConfig(config: Config): Config {
 }
 
 ```
-I am probably just doing something wrong, but the docs are unclear. This setup could be improved by adding a flow within the extension for adding PATs and subsequently adding repos. If this could generalized, that would be best given that users can develop custom providers.
+I am probably just doing something wrong, but the docs are unclear. This setup could be improved by adding a flow within the extension for adding PATs and subsequently adding repos. If this could have a generalized API, that would be awesome for the user experience. Developers could create flows that make it super easy for users to get set up with the custom provider.
 
 ### Codebase context provider
 The codebase was too large to use the context provider for the entire codebase, however using the open files context provider worked beautifully!
