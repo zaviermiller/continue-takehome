@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Sandbox</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module">
+    window.addEventListener('message', (event) => {
+      try {
+        if (document.readyState !== 'complete') {
+          return;
+        }
+        const code = event.data;
+        // Optionally sanitize or validate code here.
+
+        const script = document.createElement('script');
+        script.type = 'module';
+
+        script.innerHTML = `
+          import ReceiptComponent, { render, rc, text } from 'https://cdn.jsdelivr.net/npm/@resaleai/receipt-components@4.0.0/+esm';
+          import htmlRenderPlugin from 'https://cdn.jsdelivr.net/npm/@resaleai/receipt-html-renderer@1.2.0/+esm';
+          ReceiptComponent.use(htmlRenderPlugin);
+
+          ${code};
+
+          console.log(render)
+
+          render(Receipt, 'html', null).then((html) => {
+            const root = document.getElementById('root');
+            root.innerHTML = html;
+          });
+        `;
+
+        document.body.innerHTML = '<div id="root"></div>'; // Clear any previous content
+        document.body.appendChild(script);
+      } catch (error) {
+        console.error('Error executing code:', error);
+      }
+    });
+  </script>
+</body>
+
+</html>
