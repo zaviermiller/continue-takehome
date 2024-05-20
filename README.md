@@ -56,7 +56,7 @@ I also noticed that after using a custom doc source and then trying to go back a
 ### What Continue does really well
 As I've been working with this, one of the killer features I haven't used before is definitely the ability to have Continue suggest edits, and then apply them to the file all at once. I really like this and it works really well.
 
-I also really like being able to easily chat with Continue about the codebase as a whole. I wasn't initially sure how to execute the code in the playground in a secure environment, and it pointed me in the direction of a sandboxed iframe that works really well.
+I also really like being able to easily chat with Continue about the project as a whole. I wasn't initially sure how to execute the code in the playground in a secure environment, and it pointed me in the direction of a sandboxed iframe that works really well.
 
 ### Reflection
 I now have a simple code editor that users can work in and view their receipts instantly! There is a lot more I would like to do, such as adding better TypeScript support (some autocomplete doesn't work as well as it does in VSCode), allowing multiple files and imports, and the ability to either show the rendered HTML OR the rendered bytes that you can copy and paste and see a receipt actually print.
