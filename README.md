@@ -49,6 +49,7 @@ I also really like being able to easily chat with Continue about the codebase as
 
 ### Reflection
 I now have a simple code editor that users can work in and view their receipts instantly! There is a lot more I would like to do, such as adding better TypeScript support (some autocomplete doesn't work as well as it does in VSCode), allowing multiple files and imports, and the ability to either show the rendered HTML OR the rendered bytes that you can copy and paste and see a receipt actually print.
+
 I, unfortunately, spent way more time than I thought I would on this project, so I wasn't able to get to these features.
 
 Overall, I think using Continue for getting started smooths out the process a lot. It makes it easy to bounce ideas around, and explore different options for implementation and I will definitely be using it for finishing up this project.
@@ -89,6 +90,7 @@ The codebase was too large to use the context provider for the entire codebase, 
 
 ### Using Continue to complete the story
 Next I gave it the prompt asking it to just do the story for me, but due to the large filesize directly applying it to the file didn't work. It would be nice if there were some heuristics used to determine if this will happen or not and warn users.
+
 After a manual analysis of the provided code, it did seem like it would work perfectly, so I manually ported it over. Notably, there are a lot of confirmations happening in this check in process, and it was able to place the new one exactly where the story described it. There is also some complex logic around whether the volunteer exists or not, and Continue was able to deduce that logic and integrate with it perfectly.
 
 ### Reflection
