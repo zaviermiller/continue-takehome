@@ -1,0 +1,4 @@
+[submodule "compassion-ministries"]
+	path = compassion-ministries
+	url = https://github.com/hack4impact-utk/compassion-ministries
+  branch = 269-checkin-confirmation-for-missing-background-checks
