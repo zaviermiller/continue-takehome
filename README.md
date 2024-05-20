@@ -15,7 +15,7 @@ However, I immediately ran into issues when trying to use the product. These are
 ```
 Error loading webview: Error: Could not register service workers: TypeError: Failed to register a ServiceWorker for scope
 ```
-    There was nothing noted in the docs about this. However, this was fixed after I updated VSCode.
+There was nothing noted in the docs about this. However, this was fixed after I updated VSCode.
 4. **Rate limiting** - After fixing all of the above, I got an error telling me that there were too many requests on each model. I found [this](https://discord.com/channels/1108621136150929458/1219699580719861872) question in the Discord and was able to view more information, but again this was not mentioned in the docs. While adding each and every issue to the docs is infeasible, I think it would be valuable to track the amount of users facing different issues, allowing for common ones to be added to the docs and create a more streamlined setup experience.
 
 After fixing these issues, I was able to proceed with the tutorial, and I was quite impressed with the capabilities. Specifically, I was really impressed with the debugging example, and the fact that the code produced by the Continue output is able to be automatically inserted (something Copilot lacks which is one of my major gripes with that extension).
