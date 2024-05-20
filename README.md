@@ -11,7 +11,9 @@ I started by installing the extension and configuring how I want to use Continue
 However, I immediately ran into issues when trying to use the product. These are listed below.
 1. **Performance issues** - This seems to only occur when working in a large codebase with many files open. It was noticably slower after installing Continue (even to type!)
 2. **Overlapping keybindings** - I use the Vim keybinds extension, and this caused the keybinds in the tutorial to not work. I can quite easily change the keybinds, however with a lot of keybindings it is difficult to find one. It would be neat if a codelens would pop up after highlighting some text with the content of the inline tip (but clickable), though through my research I am not sure how possible this is.
-3. **Webview issue** - When initially trying to use the extension I got the error `Error loading webview: Error: Could not register service workers: TypeError: Failed to register a ServiceWorker for scope`, and there was nothing noted in the docs about this. However, this was fixed after I updated VSCode.
+3. **Webview issue** - When initially trying to use the extension I got the following error:
+```Error loading webview: Error: Could not register service workers: TypeError: Failed to register a ServiceWorker for scope```
+    There was nothing noted in the docs about this. However, this was fixed after I updated VSCode.
 4. **Rate limiting** - After fixing all of the above, I got an error telling me that there were too many requests on each model. I found [this](https://discord.com/channels/1108621136150929458/1219699580719861872) question in the Discord and was able to view more information, but again this was not mentioned in the docs. While adding each and every issue to the docs is infeasible, I think it would be valuable to track the amount of users facing different issues, allowing for common ones to be added to the docs and create a more streamlined setup experience.
 
 After fixing these issues, I was able to proceed with the tutorial, and I was quite impressed with the capabilities. Specifically, I was really impressed with the debugging example, and the fact that the code produced by the Continue output is able to be automatically inserted (something Copilot lacks which is one of my major gripes with that extension).
@@ -29,7 +31,9 @@ Hello, I am trying to create a web-based playground for a TypeScript library I h
 It told me I can use React (or other frontend frameworks) and a library called `monaco-editor` for the code editor. It was also helpful in getting the types and functions into the editor.
 
 ### Custom doc sources
-I wanted to test adding custom docs for the docs context, so I added the [monaco editor docs](https://microsoft.github.io/monaco-editor/docs.html), but upon trying to use it I got the error `Error getting context items from docs: TypeError: Tensor.data must be a typed array for numeric tensor`. It appears to still give an output, and this may be due to my using a source that Continue doesn't know how to parse.
+I wanted to test adding custom docs for the docs context, so I added the [monaco editor docs](https://microsoft.github.io/monaco-editor/docs.html), but upon trying to use it I got the following error:
+```Error getting context items from docs: TypeError: Tensor.data must be a typed array for numeric tensor```
+It appears to still give an output, and this may be due to my using a source that Continue doesn't know how to parse.
 
 I also noticed that the docs I add are not persisted. This may have been user error, as I didn't spend too much time investigating, but I've listed minimal reproduction steps:
 1. Open a new window
