@@ -9,10 +9,10 @@ I have also written some notes on the setup process, including troubles I ran in
 I started by installing the extension and configuring how I want to use Continue. After this, I was given a tutorial which I thought was super cool and I haven't seen any other extensions do something like that before.
 
 However, I immediately ran into issues when trying to use the product. These are listed below.
-1. Performance issues - This seems to only occur when working in a large codebase with many files open. It was noticably slower after installing Continue (even to type!)
-2. Overlapping keybindings - I use the Vim keybinds extension, and this caused the keybinds in the tutorial to not work. I can quite easily change the keybinds, however with a lot of keybindings it is difficult to find one. It would be neat if a codelens would pop up after highlighting some text with the content of the inline tip (but clickable), though through my research I am not sure how possible this is.
-3. Webview issue - When initially trying to use the extension I got the error `Error loading webview: Error: Could not register service workers: TypeError: Failed to register a ServiceWorker for scope`, and there was nothing noted in the docs about this. However, this was fixed after I updated VSCode.
-4. Rate limiting - After fixing all of the above, I got an error telling me that there were too many requests on each model. I found [this](https://discord.com/channels/1108621136150929458/1219699580719861872) question in the Discord and was able to view more information, but again this was not mentioned in the docs. While adding each and every issue to the docs is infeasible, I think it would be valuable to track the amount of users facing different issues, allowing for common ones to be added to the docs and create a more streamlined setup experience.
+1. **Performance issues** - This seems to only occur when working in a large codebase with many files open. It was noticably slower after installing Continue (even to type!)
+2. **Overlapping keybindings** - I use the Vim keybinds extension, and this caused the keybinds in the tutorial to not work. I can quite easily change the keybinds, however with a lot of keybindings it is difficult to find one. It would be neat if a codelens would pop up after highlighting some text with the content of the inline tip (but clickable), though through my research I am not sure how possible this is.
+3. **Webview issue** - When initially trying to use the extension I got the error `Error loading webview: Error: Could not register service workers: TypeError: Failed to register a ServiceWorker for scope`, and there was nothing noted in the docs about this. However, this was fixed after I updated VSCode.
+4. **Rate limiting** - After fixing all of the above, I got an error telling me that there were too many requests on each model. I found [this](https://discord.com/channels/1108621136150929458/1219699580719861872) question in the Discord and was able to view more information, but again this was not mentioned in the docs. While adding each and every issue to the docs is infeasible, I think it would be valuable to track the amount of users facing different issues, allowing for common ones to be added to the docs and create a more streamlined setup experience.
 
 After fixing these issues, I was able to proceed with the tutorial, and I was quite impressed with the capabilities. Specifically, I was really impressed with the debugging example, and the fact that the code produced by the Continue output is able to be automatically inserted (something Copilot lacks which is one of my major gripes with that extension).
 
@@ -37,7 +37,7 @@ I also noticed that the docs I add are not persisted. This may have been user er
 3. Close the window
 4. Reopen the window and try and access the docs.
 
-Keeping these docs stored would be a huge win. In large projects, you usually work with the same set of libraries, so quickly referencing those is paramount to fast development. It would also be cool if there could be different environments to reduce noise. If I'm working in a Rails project, I can add all of the docs I need to a Rails environment, and only use those. If I then work in a Python project for a client, I could set up an environment with all the docs I need for that.
+Keeping these docs stored would be a huge win. In many projects, you usually work with the same set of libraries, so quickly referencing those is paramount to fast development. It would also be cool if there could be different environments to reduce noise. If I'm working in a Rails project, I can add all of the docs I need to a Rails environment, and only use those. If I then work in a Python project for a client, I could set up an environment with all the docs I need for that.
 
 I also noticed that after using a custom doc source and then trying to go back and ask a question using a different doc source, the custom one is used. Screenshot below.
 ![Continue using the Monaco editor source instead of the Continue docs](./images/using-incorrect-context.png)
@@ -61,7 +61,9 @@ For the existing project, I am going to complete a ticket for the Hack4Impact pr
 ### Adding a context provider
 To begin, I wanted to try and use the GitHub issues context provider. To get started I asked Continue how to do this, but it wasn't able to effectively parse the docs and help, so I reverted to reading the docs manually.
 
-It was quite simple to set this up, however after adding the issues context provider, the default context providers were removed. To fix this I easily used the `config.ts` file to add the context provider instead of setting it directly. However, the TypeScript type `ContextProviderName` is not up to date, so TypeScript showed an error.
+It was quite simple to set this up, however after adding the issues context provider, the default context providers were removed.
+
+To fix this I easily used the `config.ts` file to add the context provider instead of setting it directly. However, the TypeScript type `ContextProviderName` is not up to date, so TypeScript showed an error.
 
 Also, pushing in this way shows multiple GitHub Issues context providers (image below), and I am not sure how best to add context providers while keeping the current ones.
 
@@ -87,7 +89,9 @@ export function modifyConfig(config: Config): Config {
 }
 
 ```
-I am probably just doing something wrong, but the docs are unclear. This setup could be improved by adding a flow within the extension for adding PATs and subsequently adding repos. If this could have a generalized API, that would be awesome for the user experience. Developers could create flows that make it super easy for users to get set up with the custom provider.
+I am probably just doing something wrong, but the docs are unclear.
+
+This setup could be improved by adding a flow within the extension for adding PATs and subsequently adding repos. If this could have a generalized API, that would be awesome for the user experience. Developers could create flows that make it super easy for users to get set up with the custom provider.
 
 ### Codebase context provider
 The codebase was too large to use the context provider for the entire codebase, however using the open files context provider worked beautifully!
@@ -95,7 +99,9 @@ The codebase was too large to use the context provider for the entire codebase, 
 ### Using Continue to complete the story
 Next I gave it the prompt asking it to just do the story for me, but due to the large filesize directly applying it to the file didn't work. It would be nice if there were some heuristics used to determine if this will happen or not and warn users.
 
-After a manual analysis of the provided code, it did seem like it would work perfectly, so I manually ported it over. Notably, there are a lot of confirmations happening in this check in process, and it was able to place the new one exactly where the story described it. There is also some complex logic around whether the volunteer exists or not, and Continue was able to deduce that logic and integrate with it perfectly.
+After a manual analysis of the provided code, it did seem like it would work perfectly, so I manually ported it over.
+
+Notably, there are a lot of confirmations happening in this check in process, and it was able to place the new one exactly where the story described it. There is also some complex logic around whether the volunteer exists or not, and Continue was able to deduce that logic and integrate with it perfectly.
 
 ### Reflection
 Overall, I spent about 30 minutes on this portion (with about 20 of them going towards trying to get set up properly), which is a lot quicker than the average pace these issues get complete on our team.
