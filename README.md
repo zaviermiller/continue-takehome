@@ -19,6 +19,7 @@ After fixing these issues, I was able to proceed with the tutorial, and I was qu
 ## [Project from scratch](https://github.com/zaviermiller/continue-takehome/tree/main/rc-playground)
 The project I am creating from scratch is a web-based playground for my receipt-components library. This is something I've wanted to implement for a while, and I'm super excited about it. This will help users get their feet wet with the product before installing and using it in their own projects.
 
+### Getting started
 I've never done this before, so I used the Continue chat feature to ask for advice:
 
 ```
@@ -27,6 +28,7 @@ Hello, I am trying to create a web-based playground for a TypeScript library I h
 
 It told me I can use React (or other frontend frameworks) and a library called `monaco-editor` for the code editor. It was also helpful in getting the types and functions into the editor.
 
+### Custom doc sources
 I wanted to test adding custom docs for the docs context, so I added the [monaco editor docs](https://microsoft.github.io/monaco-editor/docs.html), but upon trying to use it I got the error `Error getting context items from docs: TypeError: Tensor.data must be a typed array for numeric tensor`. It appears to still give an output, and this may be due to my using a source that Continue doesn't know how to parse.
 
 I also noticed that the docs I add are not persisted. This may have been user error, as I didn't spend too much time investigating, but I've listed minimal reproduction steps:
@@ -40,10 +42,12 @@ Keeping these docs stored would be a huge win. In large projects, you usually wo
 I also noticed that after using a custom doc source and then trying to go back and ask a question using a different doc source, the custom one is used. Screenshot below.
 ![Continue using the Monaco editor source instead of the Continue docs](./images/using-incorrect-context.png)
 
+### What Continue does really well
 As I've been working with this, one of the killer features I haven't used before is definitely the ability to have Continue suggest edits, and then apply them to the file all at once. I really like this and it works really well.
 
 I also really like being able to easily chat with Continue about the codebase as a whole. I wasn't initially sure how to execute the code in the playground in a secure environment, and it pointed me in the direction of a sandboxed iframe that works really well.
 
+### Reflection
 I now have a simple code editor that users can work in and view their receipts instantly! There is a lot more I would like to do, such as adding better TypeScript support (some autocomplete doesn't work as well as it does in VSCode), allowing multiple files and imports, and the ability to either show the rendered HTML OR the rendered bytes that you can copy and paste and see a receipt actually print.
 I, unfortunately, spent way more time than I thought I would on this project, so I wasn't able to get to these features.
 
@@ -53,6 +57,7 @@ Overall, I think using Continue for getting started smooths out the process a lo
 
 For the existing project, I am going to complete a ticket for the Hack4Impact project for Compassion Ministries. The ticket I am working on is [this](https://github.com/hack4impact-utk/compassion-ministries/issues/269) one.
 
+### Adding a context provider
 To begin, I wanted to try and use the GitHub issues context provider. To get started I asked Continue how to do this, but it wasn't able to effectively parse the docs and help, so I reverted to reading the docs manually.
 
 It was quite simple to set this up, however after adding the issues context provider, the default context providers were removed. To fix this I easily used the `config.ts` file to add the context provider instead of setting it directly. However, the TypeScript type `ContextProviderName` is not up to date, so TypeScript showed an error. Also, pushing in this way shows multiple GitHub Issues context providers, and I am not sure how best to add context providers while keeping the current ones.
@@ -77,17 +82,19 @@ export function modifyConfig(config: Config): Config {
 }
 
 ```
-
 I am probably just doing something wrong, but the docs are unclear. This setup could be improved by adding a flow within the extension for adding PATs and subsequently adding repos. If this could generalized, that would be best given that users can develop custom providers.
 
+### Codebase context provider
 The codebase was too large to use the context provider for the entire codebase, however using the open files context provider worked beautifully!
 
+### Using Continue to complete the story
 Next I gave it the prompt asking it to just do the story for me, but due to the large filesize directly applying it to the file didn't work. It would be nice if there were some heuristics used to determine if this will happen or not and warn users.
 After a manual analysis of the provided code, it did seem like it would work perfectly, so I manually ported it over. Notably, there are a lot of confirmations happening in this check in process, and it was able to place the new one exactly where the story described it. There is also some complex logic around whether the volunteer exists or not, and Continue was able to deduce that logic and integrate with it perfectly.
 
+### Reflection
 Overall, I spent about 30 minutes on this portion (with about 20 of them going towards trying to get set up properly), which is a lot quicker than the average pace these issues get complete on our team.
 
 The PR I opened can be found [here](https://github.com/hack4impact-utk/compassion-ministries/pull/386)
 
 ## Summary
-All in all, I really like Continue, and I can see the vision. However, there are definitely some things that either don't work or are difficult to get working, and some opportunities to improve the user experience.
+All in all, I really like Continue, and I can see the vision of this product. However, there are definitely some things that either don't work or are difficult to get working, and some opportunities to improve the user experience.
